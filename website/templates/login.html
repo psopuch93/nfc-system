@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<title>{% block title %}Login{% endblock %}</title>
+{% block content %}
+<form action="/login" method="POST">
+    <div class="align-middle" style="padding-top:4.5rem;width:39vw;margin:auto;">
+        <div class="container">
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label"><b>Login</b></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" id="inputLogin" value="" name="login_form">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label"><b>Password</b></label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control form-control-sm" id="inputPassword" name="password_form">
+                </div>
+            </div>
+        </div>
+    </div>
+    </br></br></br>
+    <div class="d-grid gap-2 col-6 mx-auto" style="width: 17%;">
+        <button class="btn btn-primary" style="--bs-btn-padding-y: .65rem; --bs-btn-padding-x: .7rem; --bs-btn-font-size: .85rem;" type="submit" name="login_button">Login</button>
+    </div>
+</form>
+{% endblock %}
