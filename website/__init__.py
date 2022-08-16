@@ -4,7 +4,7 @@ from os import path
 
 
 db = SQLAlchemy()
-DB_NAME = "datebase"
+DB_NAME = "database"
 
 #Initialazing app
 def create_app():
@@ -23,18 +23,19 @@ def create_app():
     from .views import views
     from .auth import auth
 
-    import .models
-
     #Register blueprints, prefix none
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
+    from .models import User
 
+    create_database(app)
 
     return app
-
-def create_datebase(app):
-    if not path.exists():
+#If db tables doesn't exist, create new
+def create_database(app):
+    if not path.exists(app.config['SQLALCHEMY_DATABASE_URI']):
         db.create_all(app=app)
+        print('Created Database!')
 
 

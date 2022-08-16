@@ -8,8 +8,6 @@ def login():
         login =  request.form.get('login_form')
         password = request.form.get('password_form')
 
-
-
     return render_template("login.html")
 
 @auth.route('/logout')
