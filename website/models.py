@@ -10,15 +10,14 @@ class Employee(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     lastname = db.Column(db.String(128))
-    '''
     tag_logger_id = db.Column(db.Integer, db.ForeignKey('project.id'), unique=True)
-    tag_logger = db.relationship("Tag_logger", backref=backref("employee", uselist=False))
-    tag_tool_id = db.Column(db.Integer, db.ForeignKey('tag_tool.id'), unique=True)
-    tag_tool = db.relationship("Tag_tool", backref=backref("employee", uselist=False))
+    tag_logger = db.relationship("Tag", backref=backref("employee", uselist=False))
+    tag_tool_id = db.Column(db.Integer, db.ForeignKey('tag.id'), unique=True)
+    tag_tool = db.relationship("Tag", backref=backref("employee", uselist=False))
     project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-    project = db.relationship("Phone", backref=backref("employee", uselist=False))
-    phone_id = db.relationship('Phone')
-    '''
+    project = db.relationship("Project", backref=backref("employee", uselist=False))
+    phone_id = db.Column(db.Integer, db.ForeignKey('phone.id'), unique=True)
+    phone = db.relationship("Phone", backref=backref("employee", uselist=False))
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
