@@ -4,15 +4,14 @@ from os import path
 from flask_login import LoginManager
 
 
-db = SQLAlchemy()
-DB_NAME = "database"
+from .extension import db, DB_NAME
 
 #Initialazing app
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'fr8D!Dhiweb8TRsj4@dea'
     app.config["DEBUG"] = True
-    app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+    app.config["SQLALCHEMY_POOL_RECYCLE"] = 30
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="szopenkz",

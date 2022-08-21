@@ -8,7 +8,11 @@ views = Blueprint('views', __name__)
 #Cant access home until login
 @login_required
 def home():
-    if request.method == 'POST':
         return render_template("home.html")
-    else:
-        return redirect(url_for('auth.login'))
+
+
+@views.route('/time-logger', methods = ['POST','GET'])
+@login_required
+def time_logger():
+        return render_template("time-logger.html")
+

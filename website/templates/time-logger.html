@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+<title>{% block title %}Time Logger{% endblock %}</title>
+
+
+{% block content %}
+        <nav class="navbar navbar-expand-xxl navbar-light bg-light">
+          <!-- <img src="/static/images/for_you_group.png" alt="Logo For You Group" width="300" height="auto"> -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="{{ url_for( 'views.time_logger' ) }}" type="button" role="tab" aria-controls="home" aria-selected="true">Time logger</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Employees</button>
+              </li>
+              <li class="nav-item active" role="presentation">
+                <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools" type="button" role="tab" aria-controls="tools" aria-selected="false"></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false">Projekty</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tools_log-tab" data-bs-toggle="tab" data-bs-target="#tools_log" type="button" role="tab" aria-controls="tools_log" aria-selected="false">Tools log</button>
+              </li>
+              <li class="nav-item active" role="presentation">
+                <button class="nav-link" id="tools_reg-tab" data-bs-toggle="tab" data-bs-target="#tools_reg" type="button" role="tab" aria-controls="tools_reg" aria-selected="false">Rejestr narzędzi</button>
+              </li>
+        </ul>
+        </nav>
+
+        </br></br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+
+{% endblock %}
