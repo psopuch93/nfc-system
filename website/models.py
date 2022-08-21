@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from sqlalchemy.orm import backref
 
 #Backref - back reference to parent
+'''
 class Employee(db.Model):
     __tablename__ = 'employee'
     id = db.Column(db.Integer, primary_key=True)
@@ -18,13 +19,14 @@ class Employee(db.Model):
     project = db.relationship("Project", backref=backref("employee", uselist=False))
     phone_id = db.Column(db.Integer, db.ForeignKey('phone.id'), unique=True)
     phone = db.relationship("Phone", backref=backref("employee", uselist=False))
+'''
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(128), unique=True)
     password = db.Column(db.String(128))
-    role = db.Column(db.String(16))
+    role = db.Column(db.String(16), default = "admin")
 
 class Tag(db.Model):
     __tablename__ = 'tag'

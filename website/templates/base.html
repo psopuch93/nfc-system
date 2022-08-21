@@ -15,7 +15,15 @@
         <script type="text/jacascript" src={{ url_for('static', filename='index.js') }}></script>
 
 
-        <div class="container-md">{% block content %}{% endblock %}</div>
+        <div class="container-md">
+
+        {% block content %}
+
+
+
+        {% endblock %}
+
+        </div>
 
 
     </body>
