@@ -4,20 +4,15 @@ from os import path
 from flask_login import LoginManager
 
 
-from .extension import db, DB_NAME
+from .extension import db
+
 
 #Initialazing app
-def create_app():
+def create_app(config_file="config.py"):
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'fr8D!Dhiweb8TRsj4@dea'
-    app.config["DEBUG"] = True
-    app.config["SQLALCHEMY_POOL_RECYCLE"] = 30
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="szopenkz",
-    password="crewintense",
-    hostname="szopenkz.mysql.pythonanywhere-services.com",
-    databasename="szopenkz${}".format(DB_NAME))
+
+    app.config.from_pyfile(config_file)
+
     db.init_app(app)
 
     #importing blueprints views
