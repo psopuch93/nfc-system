@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 <title>{% block title %}Home{% endblock %}</title>
 {% block content %}
-
+<nav class="navbar navbar-expand-xxl navbar-light bg-light">
+          <!-- <img src="/static/images/for_you_group.png" alt="Logo For You Group" width="300" height="auto"> -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class = "nav-link" href = "{{url_for('views.home')}}" type="button" >Time logger</button>
+      </li>
+    </ul>
+</nav>
 {% endblock %}

@@ -7,13 +7,13 @@
           <!-- <img src="/static/images/for_you_group.png" alt="Logo For You Group" width="300" height="auto"> -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
-                <a class = "nav-link active" href = "{{url_for('views.home')}}" type="button" >Time logger</a>
+                <a class = "nav-link" href = "{{url_for('views.home')}}" type="button" >Time logger</a>
               </li>
               <li class="nav-item" role="presentation">
                 <a class = "nav-link" href = "{{url_for('views.employees')}}" type="button" >Employees</a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class = "nav-link" href = "{{url_for('views.projects')}}" type="button" >Projects</a>
+                <a class = "nav-link active" href = "{{url_for('views.projects')}}" type="button" >Projects</a>
               </li>
               <li class="nav-item" role="presentation">
                 <a class = "nav-link" href = "{{url_for('views.loggertags')}}" type="button" >Logger Tags</a>
@@ -22,13 +22,11 @@
         </nav>
 
         </br></br>
-
-        <!--
-        <div class="container">
-             Detailed search form
+        <div class="container"
+            <!-- Detailed project view -->
             <form action="/search" method="POST">
               <label for="exampleDataList" class="form-label">Search project</label>
-                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type lastname" autocomplete="off" name="search_field">
+                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type project" autocomplete="off" name="search_field">
                 <datalist id="datalistOptions">
                     {% for project in projects %}
                   <option value="{{ project.name }}">
@@ -40,7 +38,6 @@
                 <button type="submit" class="btn btn-primary">Find</button>
             </form>
         </div>
-        -->
 
         <div class="container">
             </br></br>
@@ -48,28 +45,19 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Project Tag</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
+                {% for project in projects %}
+                  <th scope="row">{{ project.id }}</th>
+                  <td>{{ project.name }}</td>
+                  <td>Francja</td>
+                  <td>{{ project.serial }}</td>
+                {% endfor %}
                 </tr>
               </tbody>
             </table>
