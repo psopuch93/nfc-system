@@ -9,7 +9,7 @@ from sqlalchemy.orm import backref
 class Employee(db.Model):
     __tablename__ = 'employee'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(128))
     lastname = db.Column(db.String(128))
     logger_tag_id = db.Column(db.Integer, db.ForeignKey('loggertag.id'), unique=True)
@@ -24,7 +24,7 @@ class Employee(db.Model):
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     login = db.Column(db.String(128), unique=True)
     password = db.Column(db.String(128))
     role = db.Column(db.String(16), default = "admin")
@@ -32,28 +32,29 @@ class User(db.Model, UserMixin):
 class LoggerTag(db.Model):
     __tablename__ = 'loggertag'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     serial = db.Column(db.String(16), unique=True)
 
 
 class ToolTag(db.Model):
     __tablename__ = 'tooltag'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     serial = db.Column(db.String(16), unique=True)
 
 
 class Project(db.Model):
     __tablename__ = 'project'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(128), unique=True)
+    country = db.Column(db.String(128))
     serial = db.Column(db.String(16), unique=True)
 
 class Tool(db.Model):
     __tablename__ = 'tool'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(128))
     serial = db.Column(db.String(128), unique=True)
     tag = db.Column(db.String(16), unique=True)
@@ -61,16 +62,15 @@ class Tool(db.Model):
 class Phone(db.Model):
     __tablename__ = 'phone'
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(128))
-    imei = db.Column(db.String(64), unique=True)
-    mac = db.Column(db.String(16), unique=True)
+    comp_id = db.Column(db.Integer)
 
 class TimeLog(db.Model):
     __tablename__ = "timelog"
     __table_args__ = {'extend_existing': True}
-    id = db.Column(db.Integer, primary_key=True)
-    mac = db.Column(db.String(64))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    phone = db.Column(db.String(64))
     tag = db.Column(db.String(64))
     project = db.Column(db.String(64))
     date = db.Column(db.String(64))

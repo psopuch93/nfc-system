@@ -18,6 +18,9 @@
               <li class="nav-item" role="presentation">
                 <a class = "nav-link active" href = "{{url_for('views.loggertags')}}" type="button" >Logger Tags</a>
               </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.phones')}}" type="button" >Phones</a>
+              </li>
             </ul>
         </nav>
 
@@ -32,7 +35,7 @@
                 </tr>
               </thead>
               <tbody>
-                  {% for tag in loggertags %}
+                  {% for tag in loggertag %}
                 <tr>
                   <th scope="row">{{ tag.id }}</th>
                   <td>{{ tag.serial }}</td>

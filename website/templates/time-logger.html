@@ -18,6 +18,9 @@
               <li class="nav-item" role="presentation">
                 <a class = "nav-link" href = "{{url_for('views.loggertags')}}" type="button" >Logger Tags</a>
               </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.phones')}}" type="button" >Phones</a>
+              </li>
             </ul>
         </nav>
 
@@ -43,34 +46,32 @@
         -->
 
         <div class="container">
+            <label for="date" class="form-label">Choose date: </label>
+            <input type="date" id="start" name="trip-start" min="2022-01-01" max="2040-12-31" value="">
+
             </br></br>
             <table class="table" style="text-align:center;">
               <thead>
+
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Supervisor</th>
+                  <th scope="col">Subordinate</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
                 </tr>
               </thead>
               <tbody>
+                  {% for log in timelogger %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row">{{ log.id }}</th>
+                  <td>{{ log.phone }}</td>
+                  <td>{{ log.tag }}</td>
+                  <td>{{ log.date }}</td>
+                  <td>{{ log.time }}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                    {% endfor %}
+
               </tbody>
             </table>
         </div>

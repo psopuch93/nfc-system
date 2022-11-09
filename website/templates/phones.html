@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+<title>{% block title %}Phones{% endblock %}</title>
+
+
+{% block content %}
+        <nav class="navbar navbar-expand-xxl navbar-light bg-light">
+          <!-- <img src="/static/images/for_you_group.png" alt="Logo For You Group" width="300" height="auto"> -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.home')}}" type="button" >Time logger</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.employees')}}" type="button" >Employees</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.projects')}}" type="button" >Projects</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.loggertags')}}" type="button" >Logger Tags</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link active" href = "{{url_for('views.phones')}}" type="button" >Phones</a>
+              </li>
+            </ul>
+        </nav>
+
+
+<!--
+
+        </br></br>
+        <div class="container">
+            # Detailed project view
+            <form action="/search" method="POST">
+              <label for="exampleDataList" class="form-label">Search project</label>
+                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type project" autocomplete="off" name="search_field">
+                <datalist id="datalistOptions">
+                    {% for phone in phones %}
+                  <option value="{{ phone.imei }}">
+                    {% endfor %}
+                </datalist>
+
+                </br>
+                <div style = "display: inline-flex">
+                <button type="submit" class="btn btn-primary">Find</button>
+                <button type="submit" class="btn btn-primary" id="PhoneAddButton">Add new</button>
+            </form>
+        </div>
+-->
+
+    </br></br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Add phone
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New phone</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="/phones/new">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Model</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" name = "PhoneModel" placeholder="Type phone model" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Company ID</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" name= "PhoneIMEI" placeholder="Type phone IMEI" autocomplete="off" required>
+                </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" name="">Save changes</button>
+          </div>
+            </form>
+        </div>
+      </div>
+    </div>
+
+
+        <div class="container">
+            </br></br>
+            <table class="table" style="text-align:center;">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Model</th>
+                  <th scope="col">Company ID</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                 {% for phone in phones %}
+                <tr>
+                  <th scope="row">{{ phone.id }}</th>
+                  <td>{{ phone.name }}</td>
+                  <td>{{ phone.comp_id }}</td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+{% endblock %}

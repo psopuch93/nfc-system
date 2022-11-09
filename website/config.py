@@ -1,8 +1,11 @@
 DB_NAME = "database"
 SECRET_KEY = 'fr8D!Dhiweb8TRsj4@dea'
 DEBUG = True
-SQLALCHEMY_POOL_RECYCLE = 30
+SQLALCHEMY_POOL_RECYCLE = 299
+SQLALCHEMY_POOL_SIZE=100
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_POOL_PRE_PING = True
+SQLALCHEMY_POOL_TIMEOUT = 180
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="szopenkz",
     password="crewintense",

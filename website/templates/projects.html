@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-<title>{% block title %}Time Logger{% endblock %}</title>
+<title>{% block title %}Projects{% endblock %}</title>
 
 
 {% block content %}
@@ -18,11 +18,14 @@
               <li class="nav-item" role="presentation">
                 <a class = "nav-link" href = "{{url_for('views.loggertags')}}" type="button" >Logger Tags</a>
               </li>
+              <li class="nav-item" role="presentation">
+                <a class = "nav-link" href = "{{url_for('views.phones')}}" type="button" >Phones</a>
+              </li>
             </ul>
         </nav>
 
         </br></br>
-        <div class="container"
+        <div class="container">
             <!-- Detailed project view -->
             <form action="/search" method="POST">
               <label for="exampleDataList" class="form-label">Search project</label>
@@ -55,10 +58,10 @@
                 {% for project in projects %}
                   <th scope="row">{{ project.id }}</th>
                   <td>{{ project.name }}</td>
-                  <td>Francja</td>
+                  <td>{{ project.country }}</td>
                   <td>{{ project.serial }}</td>
-                {% endfor %}
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
         </div>
